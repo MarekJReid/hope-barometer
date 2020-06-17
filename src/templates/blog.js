@@ -18,7 +18,7 @@ export const query = graphql`
 `
 
 const Blog = props => {
-
+console.log (props)
 
   return (
     <Layout>
