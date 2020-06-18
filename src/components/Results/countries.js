@@ -26,7 +26,7 @@ PostData.find((item) => {
             
             articleInfo={postInfo.title}
             >
-              <p>{articleInfo.title}</p>
+           
                 {countryCodeToFlagEmoji(countryCode)}
             </Link>
           
