@@ -6,27 +6,13 @@ import {useStaticQuery, Link} from 'gatsby'
 import countryCodeToFlagEmoji from 'country-code-to-flag-emoji'
 import PostData from '../../templates/countries.json'
 
-const Countries = (postInfo) => {
+const Countries = ({postInfo}) => {
 
-  const data = useStaticQuery(graphql`
-  query {
-    allContentfulReport(sort: { fields: publishedDate, order: DESC }) {
-      edges {
-        node {
-          country
-          publishedDate(formatString: "YYYY")
-          
-        }
-      }
-    }
-  }
-`)
-
-const reportProps = postInfo.postInfo
-
+let articleInfo = postInfo
+// console.log(postInfo)
 
 let countryCode
-let country = reportProps.country
+let country = postInfo.country
 PostData.find((item) => {
     if (country.substring(0, 1).toUpperCase() + country.substring(1).toLowerCase() == item.name)
         countryCode = item.alpha2
@@ -35,8 +21,12 @@ PostData.find((item) => {
     return (
         <div>
          
-         <Link to={`/results/${reportProps.country}`}
-            style={{display: 'inline-block'}}>
+         <Link to={`/results/${country}`}
+            style={{display: 'inline-block'}}
+            
+            articleInfo={postInfo.title}
+            >
+              <p>{articleInfo.title}</p>
                 {countryCodeToFlagEmoji(countryCode)}
             </Link>
           

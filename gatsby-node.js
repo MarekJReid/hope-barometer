@@ -5,34 +5,36 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const blogTemplate = path.resolve('./src/templates/blog.js')
   const reportTemplate = path.resolve('./src/templates/report.js')
   const res = await graphql(`
-        query {
-            allContentfulBlogPost {
-                edges {
-                    node {
-                        slug
-                    }
-                }
-            }
-            allContentfulReport {
-              edges {
-                  node {
-                      country
-                  }
-              }
-          }
+  query {
+    allContentfulReport {
+      edges {
+        node {
+          country
         }
+      }
+    }
+    allContentfulBlogPost {
+      edges {
+        node {
+          slug
+        }
+      }
+    }
+  }
     `)
 
-  res.data.allContentfulBlogPost.edges.forEach((edge) => {
+  res.data.allContentfulBlogPost.edges.forEach((blog) => {
     createPage({
       component: blogTemplate,
-      path: `/blog/${edge.node.slug}`,
+      path: `/blog/${blog.node.slug}`,
       context: {
-        slug: edge.node.slug
+        slug: blog.node.slug
       }
+     
     })
+    console.log('hello')
   })
-
+console.log('hello')
   res.data.allContentfulReport.edges.forEach((edge) => {
     createPage({
       component: reportTemplate,

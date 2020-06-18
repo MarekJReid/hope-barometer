@@ -3,20 +3,23 @@ import Layout from '../components/layout';
 import { graphql } from 'gatsby'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
-export const query = graphql`
-query  {
-  contentfulReport {
-    title
-    author
-    publishedDate(formatString: "MMMM Do, YYYY")
-    body {
-      json
-    }
+export const data = graphql`
+query ($country: String) {
+  contentfulReport (country: {eq: $country}){
+     title
+
+publishedDate(formatString: "MMMM Do, YYYY")
+body {
+json
+}
   }
-} 
+
+    }
 `
 
-const Blog = (props) => {
+
+const Blog = ( {data} ) => {
+  console.log(data.contentfulReport.publishedDate)
   return (
     <div>
 
@@ -35,23 +38,28 @@ const Blog = (props) => {
                   style={{
                     padding: '1rem'
                   }}>
-                  {props.data.contentfulReport.title}
+                     
+                     <p>
+                     {data.contentfulReport.title}
+                     </p>
+                    
+                 
                 </div>
                 <div className="card-title center-align"
                   style={{
                     padding: '1rem'
                   }}>
-                  Date Released: {props.data.contentfulReport.publishedDate}
+                  Date Released: {data.contentfulReport.publishedDate}
                 </div>
                 <div className="card-title center-align"
                   style={{
                     padding: '1rem'
                   }}
                 >
-                  Author: {props.data.contentfulReport.author}
+                  Author: {data.contentfulReport.author}
                 </div>
                 <div className="card-content center-align">
-                  {documentToReactComponents(props.data.contentfulReport.body.json)}
+                  {documentToReactComponents(data.contentfulReport.body.json)}
                 </div>
               </div>
             </div>

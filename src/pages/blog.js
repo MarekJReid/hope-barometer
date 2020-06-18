@@ -39,6 +39,10 @@ const BlogPosts = () => {
                 }}>
                   <Link to={`/blog/${edges.node.slug}`}
                   style={{display: 'block', padding: '2rem', color: 'black'}}
+                  title={ edges.node.title
+                  } 
+                  date={ edges.node.date }
+
                   >
                     <h2>{edges.node.title}</h2>
                     <p>{edges.node.publishedDate}</p>
