@@ -5,6 +5,7 @@ module.exports = {
     author: `The Hope Barometer`,
   },
   plugins: [
+    `gatsby-plugin-scroll-reveal`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -73,4 +74,7 @@ module.exports = {
               related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
               noIframeBorder: true,
   },
+  
+    
+
 }

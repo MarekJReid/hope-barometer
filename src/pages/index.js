@@ -3,21 +3,32 @@ import React from "react";
 import Layout from "../components/layout";
 import Video from "../components/video";
 import SEO from "../components/seo";
-
+import Hero from "../components/landing/hero";
+import LandingQoute from "../components/landing/landing-qoute";
+import LandingAbout from "../components/landing/landing-about";
+import TeamLanding from '../components/landing/team'
+import LandingSurvey from '../components/landing/landing-survey'
+import MailchimpSignup from '../components/landing/mailchimp-signup.js'
+import Publications from '../components/landing/publications'
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <div style={{ height: "100vh" }}>
-      <div className="container">
-        <div className="section">
-          <h1 className="center-align">Welcome to the Hope Barometer</h1>
+    <div>
+      <Hero />
+      <LandingQoute />
+     
+      
+      <LandingAbout />
+      <TeamLanding />
+      <LandingSurvey />
 
-          <Video
-            videoSrcURL="https://player.vimeo.com/video/428430548"
-            videoSrcTitle="Hope Barometer Presentation"
-          />
-        </div>
+      <Publications />
+      <div className="section">
+        <MailchimpSignup />
       </div>
+
+      
+      
     </div>
   </Layout>
 );

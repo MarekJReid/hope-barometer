@@ -13,7 +13,15 @@ export default function Footer() {
   }   
   `)
     return (
-       <footer className="page-footer teal">
+       <footer className="page-footer"
+       style={{
+           background: `#9bc9e9`
+       }}
+       data-sal="slide-up"
+            data-sal-delay="500"
+            data-sal-easing="ease"
+            data-sal-duration="1000"
+       >
            <div className="container">
                <div className="row">
                    
